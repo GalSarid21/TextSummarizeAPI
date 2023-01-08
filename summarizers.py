@@ -36,5 +36,5 @@ class GptSummarizer():
 
 class Summary():
 
-    def _init_(self, content):
+    def __init__(self, content):
         self.content = content
