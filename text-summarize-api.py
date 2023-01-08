@@ -1,4 +1,4 @@
-from summarizers import GptSummarizer
+from summarizers import GptSummarizer, Summary
 from flask import request, Flask
 import json
 
@@ -26,11 +26,6 @@ def get_phrases():
     
     summary = Summary(content=summarizer.summarize(text))
     return json.dumps(summary.__dict__)
-
-class Summary():
-
-    def _init_(self, content):
-        self.content = content
 
 if __name__ == "__main__":
     app.run(debug=True)

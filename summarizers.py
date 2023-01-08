@@ -6,7 +6,7 @@ class GptSummarizer():
     
     __api_key = ''
     
-    def _init_(self, api_key, line_min_words, min_word_length):
+    def __init__(self, api_key, line_min_words, min_word_length):
         self.__api_key = api_key
         self.line_min_words = line_min_words
         self.min_word_length = min_word_length
@@ -22,7 +22,7 @@ class GptSummarizer():
             best_of=1,
             frequency_penalty=0,
             presence_penalty=0)
-        return response["choices"][0]["text"]
+        return response['choices'][0]['text']
     
     def __clean_text(self, text, include_punct=True):
         lines = text.split('\n')
@@ -32,3 +32,9 @@ class GptSummarizer():
                                     any(list(map(lambda word: len(word.replace('.','')) > self.min_word_length, line.split(' ')))))
         clean_text_lines = list(filter(line_min_len_condition, lines if include_punct else lines_without_punctoation))
         return str(' '.join(clean_text_lines))
+
+
+class Summary():
+
+    def _init_(self, content):
+        self.content = content
