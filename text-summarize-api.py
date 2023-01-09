@@ -7,8 +7,8 @@ GPT_API_KEY = ''
 app = Flask(__name__)
 summarizer = GptSummarizer(api_key=GPT_API_KEY, line_min_words=5, min_word_length=6)
 
-@app.route("/summarize-text", methods=['GET', 'POST'])
-def get_phrases():
+@app.route('/summarize-text', methods=['GET', 'POST'])
+def summarize_text():
     if request.method == 'GET':
         text = request.args.get('text')
         if(not text):
